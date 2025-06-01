@@ -1,0 +1,15 @@
+resourceBundleSelector:
+  cloudBuildRepository:
+    name: projects/graphical-radio-461315-t4/locations/us-central1/connections/cymbal-bank-connection/repositories/bank-of-anthos
+    tag: v1.0.0
+    serviceAccount: projects/graphical-radio-461315-t4/serviceAccounts/cymbal-bank-service-account@graphical-radio-461315-t4.iam.gserviceaccount.com
+    path: kubernetes-manifests
+target:
+  fleet:
+    project: projects/graphical-radio-461315-t4
+    selector:
+      matchLabels:
+        env: dev
+rolloutStrategy:
+  rolling:
+    maxConcurrent: 1
