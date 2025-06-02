@@ -1,7 +1,7 @@
 resourceBundleSelector:
   cloudBuildRepository:
     name: projects/graphical-radio-461315-t4/locations/us-central1/connections/cymbal-bank-connection/repositories/anilkumarbhardwaj-bank-of-anthos
-    tag: v1.0.0
+    tag: v1.4.0
     serviceAccount: projects/graphical-radio-461315-t4/serviceAccounts/cymbal-bank-service-account@graphical-radio-461315-t4.iam.gserviceaccount.com
     path: kubernetes-manifests
 target:
