@@ -1,0 +1,43 @@
+pipeline:
+  name: bank-of-anthos
+  identifier: bankofanthos
+  projectIdentifier: Bankofanthos
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: boagitconnector
+        build: <+input>
+  stages:
+    - stage:
+        name: Build And Push Microservices
+        identifier: Build_And_Push_Microservices
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: gkeconnector
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: GAR_Connector
+                    host: europe-west2-docker.pkg.dev/quantum-bonus-464901-u9/boa-registry
+                    projectID: quantum-bonus-464901-u9
+                    imageName: frontend
+                    tags:
+                      - frontend
